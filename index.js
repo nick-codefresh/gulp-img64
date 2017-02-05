@@ -25,7 +25,7 @@ module.exports = function() {
 		if (file.isBuffer()) {
 			var $ = cheerio.load(String(file.contents));
 			$('img').each(function() {
-				if (this.attr('src')) {
+				if (this.attr('src') && this.attr('src').indexOf('http') !== 0) {
 					var ssrc = this.attr('src');
 					var isdata = ssrc.indexOf("data");
 					if (ssrc != "" && typeof ssrc != 'undefined' && isdata !== 0) {
